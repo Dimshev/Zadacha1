@@ -9,14 +9,21 @@ public class ScannerConsole {
     public void scanner() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Введите первое число");
-        int a = scanner.nextInt();
-
-        System.out.println("Введите второе число");
-        int b = scanner.nextInt();
-
+        System.out.println("Введите два числа через пробел");
+        String result = scanner.nextLine();
+        String[] numbers = result.trim().split(" ");
+        if (numbers.length != 2) {
+            System.out.println("Неверно задан диапазон чисел");
+            return;
+        }
+        int a = Integer.parseInt(numbers[0]);
+        int b = Integer.parseInt(numbers[1]);
         if(a > b ) {
             System.out.println("Минимальное число не может быть больше максимального");
+            return;
+        }
+        if(a<0||b<0){
+            System.out.println("Минимальное или максимальное число не может быть меньше нуля");
             return;
         }
 
